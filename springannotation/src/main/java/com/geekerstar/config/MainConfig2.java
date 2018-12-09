@@ -1,6 +1,8 @@
 package com.geekerstar.config;
 
+import com.geekerstar.bean.Color;
 import com.geekerstar.bean.Person;
+import com.geekerstar.bean.Red;
 import com.geekerstar.condition.LinuxCondition;
 import com.geekerstar.condition.WindowsCondition;
 import org.springframework.context.annotation.*;
@@ -13,6 +15,7 @@ import org.springframework.context.annotation.*;
 //@Conditional({WindowsCondition.class})  类中组件统一设置，满足当前条件，这个类中配置的所有bean注册才能生效
 
 @Configuration
+@Import({Color.class, Red.class})
 public class MainConfig2 {
 
     /**
@@ -50,4 +53,12 @@ public class MainConfig2 {
     public Person person02(){
         return new Person("geekerstart",33);
     }
+
+    /**
+     * 给容器中注册组件：
+     * 1、包扫描+组件标注注解（@Controller、@Service、@Repository、@Component） 【自己写的类】
+     * 2、@Bean 【导入的第三方包里面的组件】
+     * 3、@Import 【快速给容器中导入一个组件】
+     *      1.@Import（要导入到容器中的组件）：容器中就会自动注册这个组件，id默认是全类名
+     */
 }

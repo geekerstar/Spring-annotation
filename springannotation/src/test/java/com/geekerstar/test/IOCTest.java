@@ -18,6 +18,9 @@ import java.util.Map;
  */
 public class IOCTest {
 
+    AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
+
+
     @SuppressWarnings("resource")
     @Test
     public void test01(){
@@ -58,6 +61,18 @@ public class IOCTest {
         Map<String, Person> persons = applicationContext.getBeansOfType(Person.class);
         System.out.println(persons);
 
+    }
+
+    @Test
+    public void testImport(){
+        printBeans(applicationContext);
+    }
+
+    private void printBeans(AnnotationConfigApplicationContext applicationContext){
+        String[] definitionNames = applicationContext.getBeanDefinitionNames();
+        for (String name : definitionNames) {
+            System.out.println(name);
+        }
     }
 
 }

@@ -51,6 +51,8 @@ import org.springframework.context.annotation.Scope;
  * 4、BeanPostProcessor,bean的后置处理器：在bean初始化前后进行一些处理工作
  *      postProcessBeforeInitialization:在初始化之前工作
  *      postProcessAfterInitialization:在初始化之后工作
+ *
+ *
  */
 
 @ComponentScan("com.geekerstar.bean")

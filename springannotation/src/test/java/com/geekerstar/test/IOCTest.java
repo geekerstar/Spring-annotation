@@ -1,5 +1,6 @@
 package com.geekerstar.test;
 
+import com.geekerstar.bean.Blue;
 import com.geekerstar.bean.Person;
 import com.geekerstar.config.MainConfig;
 import com.geekerstar.config.MainConfig2;
@@ -66,6 +67,9 @@ public class IOCTest {
     @Test
     public void testImport(){
         printBeans(applicationContext);
+        Blue bean = applicationContext.getBean(Blue.class);
+        System.out.println(bean);
+
     }
 
     private void printBeans(AnnotationConfigApplicationContext applicationContext){

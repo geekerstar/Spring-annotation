@@ -4,6 +4,7 @@ import com.geekerstar.bean.Color;
 import com.geekerstar.bean.Person;
 import com.geekerstar.bean.Red;
 import com.geekerstar.condition.LinuxCondition;
+import com.geekerstar.condition.MyImportBeanDefinitionRegistrar;
 import com.geekerstar.condition.MyImportSelector;
 import com.geekerstar.condition.WindowsCondition;
 import org.springframework.context.annotation.*;
@@ -16,7 +17,7 @@ import org.springframework.context.annotation.*;
 //@Conditional({WindowsCondition.class})  类中组件统一设置，满足当前条件，这个类中配置的所有bean注册才能生效
 
 @Configuration
-@Import({Color.class, Red.class, MyImportSelector.class})
+@Import({Color.class, Red.class, MyImportSelector.class, MyImportBeanDefinitionRegistrar.class})
 public class MainConfig2 {
 
     /**
@@ -62,5 +63,6 @@ public class MainConfig2 {
      * 3、@Import 【快速给容器中导入一个组件】
      *      1.@Import（要导入到容器中的组件）：容器中就会自动注册这个组件，id默认是全类名
      *      2.@ImportSelector：返回需要导入的组件的全类名数组
+     *      3.ImportBeanDefinitionRegistrar：手动注册Bean到容器中
      */
 }

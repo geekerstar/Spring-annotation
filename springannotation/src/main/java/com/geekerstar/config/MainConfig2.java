@@ -1,16 +1,17 @@
 package com.geekerstar.config;
 
 import com.geekerstar.bean.Person;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Scope;
+import com.geekerstar.condition.LinuxCondition;
+import com.geekerstar.condition.WindowsCondition;
+import org.springframework.context.annotation.*;
 
 /**
  * @author geekerstar
  * @date 2018/12/9
  * description
  */
+//@Conditional({WindowsCondition.class})  类中组件统一设置，满足当前条件，这个类中配置的所有bean注册才能生效
+
 @Configuration
 public class MainConfig2 {
 
@@ -30,5 +31,23 @@ public class MainConfig2 {
     @Bean("person")
     public Person person(){
         return new Person("geekerstar",22);
+    }
+
+    /**
+     * @Conditional({Condition}) 按照一定的条件进行判断，满足条件给容器中注册Bean
+     *
+     * 如果系统是win,给容器注册geek
+     * 如果是Linux，给容器注册geekerstar
+     */
+    @Conditional({WindowsCondition.class})
+    @Bean("geek")
+    public Person person01(){
+        return new Person("geek",22);
+    }
+
+    @Conditional({LinuxCondition.class})
+    @Bean("geekerstar")
+    public Person person02(){
+        return new Person("geekerstart",33);
     }
 }

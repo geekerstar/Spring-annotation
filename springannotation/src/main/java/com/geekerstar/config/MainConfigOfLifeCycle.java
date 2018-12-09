@@ -2,6 +2,7 @@ package com.geekerstar.config;
 
 import com.geekerstar.bean.Car;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
@@ -26,7 +27,10 @@ import org.springframework.context.annotation.Scope;
  *
  * 1、指定初始化和销毁方法
  *      配置的方式：通过@Bean指定init-method和destroy-method
+ * 2、通过让Bean实现InitialIzingBean(定义初始化逻辑），DisposableBean(定义销毁）
  */
+
+@ComponentScan("com.geekerstar.bean")
 @Configuration
 public class MainConfigOfLifeCycle {
 

@@ -1,10 +1,13 @@
 package com.geekerstar.bean;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author geekerstar
  * @date 2018/12/9
  * description
  */
+@Component
 public class Car {
 
     public Car(){

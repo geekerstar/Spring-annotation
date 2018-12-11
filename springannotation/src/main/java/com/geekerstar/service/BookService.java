@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
+
 /**
  * @author geekerstar
  * @date 2018/12/8
@@ -13,8 +16,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookService {
 
-    @Qualifier("bookDao")
-    @Autowired(required = false)
+//    @Qualifier("bookDao")
+//    @Autowired(required = false)
+//    @Resource(name = "bookDao")
+    @Inject
     private BookDao bookDao2;
 
     public void print(){

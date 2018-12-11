@@ -4,6 +4,7 @@ import com.geekerstar.bean.Person;
 import com.geekerstar.config.MainConfigOfPropertyValues;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
 
 /**
  * @author geekerstar
@@ -20,6 +21,10 @@ public class IOCTest_PropertyValue {
         printBeans(applicationContext);
         Person person = (Person)applicationContext.getBean("person");
         System.out.println(person);
+
+        ConfigurableEnvironment environment = applicationContext.getEnvironment();
+        String property = environment.getProperty("person.nikeName");
+        System.out.println(property);
 
         applicationContext.close();
     }
